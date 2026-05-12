@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Polyline;
+import javafx.scene.text.Text;
 import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
 import upv.ipc.sportlib.MapProjection;
@@ -29,6 +30,9 @@ public class MapController implements Initializable {
 
     @FXML
     private Polyline activityTrace;
+
+    @FXML
+    private Text noActivityText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +54,7 @@ public class MapController implements Initializable {
         imageView.setImage(mapImg);
     }
 
+    // TODO: Change width of the polyline based on zoom
     public void setActivity(Activity activity) {
         activityTrace.setDisable(true);
         activityTrace.setVisible(false);
@@ -65,6 +70,14 @@ public class MapController implements Initializable {
 
         activityTrace.setDisable(false);
         activityTrace.setVisible(true);
+
+        // Technically only needed for the first activity selected
+        noActivityText.setVisible(false);
+        noActivityText.setDisable(true);
+        scrollPane.setDisable(false);
+        scrollPane.setVisible(true);
+        zoomButtons.setDisable(false);
+        zoomButtons.setVisible(true);
     }
 
     @FXML
