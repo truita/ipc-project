@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.StackPane;
 import upv.ipc.runninglasafor.ActivityListCell;
 import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
@@ -16,12 +17,24 @@ public class MainController implements Initializable {
     @FXML
     private ListView<Activity> activityList;
 
+    @FXML
+    private StackPane map;
+
+    @FXML
+    private MapController mapController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         activityList.setCellFactory(c -> new ActivityListCell());
         activityList
             .getItems()
             .addAll(SportActivityApp.getInstance().getAllActivities());
+        activityList
+            .getSelectionModel()
+            .selectedItemProperty()
+            .addListener((_observable, _old, selectedActivity) -> {
+                mapController.setActivity(selectedActivity);
+            });
     }
 
     @FXML

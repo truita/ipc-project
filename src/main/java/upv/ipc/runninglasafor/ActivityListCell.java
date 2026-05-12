@@ -33,7 +33,7 @@ public class ActivityListCell extends ListCell<Activity> {
                         .format(DateTimeFormatter.ofPattern("dd/MM/YYYY"))
                 );
                 controller.distance.setText(
-                    Double.toString(item.getTotalDistance())
+                    String.format("%.2f", item.getTotalDistance() / 1000)
                 );
 
                 setGraphic(activityCell);

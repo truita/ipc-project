@@ -1,17 +1,71 @@
 package upv.ipc.runninglasafor.controllers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Polyline;
+import upv.ipc.runninglasafor.App;
+import upv.ipc.sportlib.Activity;
+import upv.ipc.sportlib.MapProjection;
+import upv.ipc.sportlib.MapRegion;
+import upv.ipc.sportlib.SportActivityApp;
 
 public class MapController implements Initializable {
 
+    private MapProjection currentMapProjection;
+    private Activity currentActivity;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    private Polyline activityTrace;
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        MapRegion region = SportActivityApp.getInstance()
+            .getMapRegions()
+            .get(0);
+        loadMapRegion(region);
+    }
+
+    private void loadMapRegion(MapRegion region) {
+        Image mapImg = new Image(
+            App.class.getResourceAsStream(region.getImagePath())
+        );
+        currentMapProjection = new MapProjection(
+            region,
+            mapImg.getWidth(),
+            mapImg.getHeight()
+        );
+        imageView.setImage(mapImg);
+    }
+
+    public void setActivity(Activity activity) {
+        activityTrace.setDisable(true);
+        activityTrace.setVisible(false);
+        ObservableList<Double> linePoints = activityTrace.getPoints();
+
+        loadMapRegion(activity.getSuggestedMap());
+
+        linePoints.clear();
+        for (Point2D point : currentMapProjection.projectActivity(activity)) {
+            linePoints.add(point.getX());
+            linePoints.add(point.getY());
+        }
+
+        activityTrace.setDisable(false);
+        activityTrace.setVisible(true);
+    }
 
     @FXML
     private ScrollPane scrollPane;
@@ -23,7 +77,6 @@ public class MapController implements Initializable {
     private VBox zoomButtons;
 
     private double zoomScale = 0;
-
     private final double ZOOM_STEP = 0.2;
 
     @FXML

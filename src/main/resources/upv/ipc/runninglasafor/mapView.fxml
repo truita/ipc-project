@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
 
 <StackPane alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.controllers.MapController">
    <children>
@@ -19,11 +21,12 @@
                <children>
                   <Pane fx:id="zoomPane">
                      <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@maps/upv.jpg" />
+                              <Image url="@maps/calderona.jpg" />
                            </image>
                         </ImageView>
+                        <Polyline fx:id="activityTrace" disable="true" fill="TRANSPARENT" points="" stroke="#1680eb" strokeType="INSIDE" strokeWidth="3.0" />
                      </children>
                   </Pane>
                </children>
@@ -35,15 +38,21 @@
       </ScrollPane>
       <VBox fx:id="zoomButtons" alignment="BOTTOM_RIGHT" maxHeight="0.0" maxWidth="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#zoomIn" text="+">
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" text="+">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="Font Awesome 7 Free Solid" size="13.0" />
+               </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#zoomOut" text="-">
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#zoomOut" prefHeight="30.0" prefWidth="30.0" text="">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="Font Awesome 7 Free Solid" size="13.0" />
+               </font>
             </Button>
          </children>
          <StackPane.margin>
