@@ -65,7 +65,7 @@
                   <Label text="Avatar" />
                   <HBox spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#browseAvatar" text="Browse" />
+                        <Button fx:id="browseAvatarButton" mnemonicParsing="false" onAction="#browseAvatar" text="Browse" />
                         <Label fx:id="avatarPathLabel" prefHeight="25.0" prefWidth="89.0" text="No file selected" />
                      </children>
                   </HBox>

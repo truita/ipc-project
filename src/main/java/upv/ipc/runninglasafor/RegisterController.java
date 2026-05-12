@@ -57,6 +57,9 @@ public class RegisterController implements Initializable {
     @FXML
     private Label avatarPathLabel;
 
+    @FXML
+    private Button browseAvatarButton;
+
     private String avatarPath;
 
     private Paint errorColor = Paint.valueOf("#d1242f");
@@ -127,19 +130,26 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void browseAvatar() throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select avatar image");
-        fileChooser
-            .getExtensionFilters()
-            .addAll(
-                new ExtensionFilter("Image Files", "*.png", "*.jpg"),
-                new ExtensionFilter("All Files", "*.*")
+        if (avatarPath == null) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Select avatar image");
+            fileChooser
+                .getExtensionFilters()
+                .addAll(
+                    new ExtensionFilter("Image Files", "*.png", "*.jpg"),
+                    new ExtensionFilter("All Files", "*.*")
+                );
+            File avatarFile = fileChooser.showOpenDialog(
+                avatarPathLabel.getScene().getWindow()
             );
-        File avatarFile = fileChooser.showOpenDialog(
-            avatarPathLabel.getScene().getWindow()
-        );
-        avatarPathLabel.setText(avatarFile.getName());
-        avatarPath = avatarFile.getAbsolutePath();
+            avatarPathLabel.setText(avatarFile.getName());
+            avatarPath = avatarFile.getAbsolutePath();
+            browseAvatarButton.setText("Delete");
+        } else {
+            avatarPathLabel.setText("No file selected");
+            avatarPath = null;
+            browseAvatarButton.setText("Browse");
+        }
     }
 
     @FXML
