@@ -2,12 +2,14 @@ package upv.ipc.runninglasafor;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
@@ -79,36 +81,34 @@ public class EditProfileController implements Initializable {
             errorLabel.setVisible(false);
         }
 
+        avatarImage.managedProperty().bind(avatarImage.visibleProperty());
+
         User user = app.getCurrentUser();
 
         nicknameTextField.setText(user.getNickName());
         birthdateDatePicker.setValue(user.getBirthDate());
         emailTextField.setText(user.getEmail());
         if (user.getAvatar() != null) avatarImage.setImage(user.getAvatar());
+        else avatarImage.setVisible(false);
     }
 
     @FXML
     private void browseAvatar() throws IOException {
-        if (avatarPath == null) {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Select avatar image");
-            fileChooser
-                .getExtensionFilters()
-                .addAll(
-                    new ExtensionFilter("Image Files", "*.png", "*.jpg"),
-                    new ExtensionFilter("All Files", "*.*")
-                );
-            File avatarFile = fileChooser.showOpenDialog(
-                avatarPathLabel.getScene().getWindow()
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select avatar image");
+        fileChooser
+            .getExtensionFilters()
+            .addAll(
+                new ExtensionFilter("Image Files", "*.png", "*.jpg"),
+                new ExtensionFilter("All Files", "*.*")
             );
-            avatarPathLabel.setText(avatarFile.getName());
-            avatarPath = avatarFile.getAbsolutePath();
-            browseAvatarButton.setText("Delete");
-        } else {
-            avatarPathLabel.setText("No file selected");
-            avatarPath = null;
-            browseAvatarButton.setText("Browse");
-        }
+        File avatarFile = fileChooser.showOpenDialog(
+            avatarPathLabel.getScene().getWindow()
+        );
+        avatarPathLabel.setText(avatarFile.getName());
+        avatarPath = avatarFile.getAbsolutePath();
+        avatarImage.setImage(new Image("file:" + avatarPath));
+        avatarImage.setVisible(true);
     }
 
     @FXML

@@ -153,26 +153,19 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void browseAvatar() throws IOException {
-        if (avatarPath == null) {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Select avatar image");
-            fileChooser
-                .getExtensionFilters()
-                .addAll(
-                    new ExtensionFilter("Image Files", "*.png", "*.jpg"),
-                    new ExtensionFilter("All Files", "*.*")
-                );
-            File avatarFile = fileChooser.showOpenDialog(
-                avatarPathLabel.getScene().getWindow()
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select avatar image");
+        fileChooser
+            .getExtensionFilters()
+            .addAll(
+                new ExtensionFilter("Image Files", "*.png", "*.jpg"),
+                new ExtensionFilter("All Files", "*.*")
             );
-            avatarPathLabel.setText(avatarFile.getName());
-            avatarPath = avatarFile.getAbsolutePath();
-            browseAvatarButton.setText("Delete");
-        } else {
-            avatarPathLabel.setText("No file selected");
-            avatarPath = null;
-            browseAvatarButton.setText("Browse");
-        }
+        File avatarFile = fileChooser.showOpenDialog(
+            avatarPathLabel.getScene().getWindow()
+        );
+        avatarPathLabel.setText(avatarFile.getName());
+        avatarPath = avatarFile.getAbsolutePath();
     }
 
     @FXML
