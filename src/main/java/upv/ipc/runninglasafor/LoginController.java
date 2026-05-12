@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void login() {
+    private void login() throws IOException {
         incorrectLoginError.setVisible(false);
         String nickname = nicknameTextField.getText();
         String password = passwordField.getText();
@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
             missingFieldError.setVisible(false);
         }
         boolean loginSuccess = app.login(nickname, password);
-        if (loginSuccess) System.out.println("Successfully logged in!");
+        if (loginSuccess) App.setRoot("main");
         else incorrectLoginError.setVisible(true);
     }
 }

@@ -176,7 +176,7 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
-    private void register() {
+    private void register() throws IOException {
         String email = emailTextField.getText();
         String password = passwordField.getText();
         LocalDate birthDate = birthdateDatePicker.getValue();
@@ -207,7 +207,7 @@ public class RegisterController implements Initializable {
             User.checkNickName(nickname)
         ) {
             app.registerUser(nickname, email, password, birthDate, avatarPath);
-            System.out.println("User succesfully registered!");
+            App.setRoot("main");
         }
     }
 }
