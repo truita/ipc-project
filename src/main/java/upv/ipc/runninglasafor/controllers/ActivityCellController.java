@@ -1,4 +1,4 @@
-package upv.ipc.runninglasafor;
+package upv.ipc.runninglasafor.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;

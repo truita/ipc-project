@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox alignment="CENTER" prefHeight="559.0" prefWidth="569.0" spacing="25.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.RegisterController">
+<VBox alignment="CENTER" prefHeight="559.0" prefWidth="569.0" spacing="25.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.controllers.RegisterController">
    <children>
       <VBox alignment="CENTER">
          <children>

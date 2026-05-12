@@ -1,8 +1,7 @@
-package upv.ipc.runninglasafor;
+package upv.ipc.runninglasafor.controllers;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -14,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.*;
 
 public class EditProfileController implements Initializable {

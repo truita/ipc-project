@@ -1,4 +1,4 @@
-package upv.ipc.runninglasafor;
+package upv.ipc.runninglasafor.controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.*;
 
 public class RegisterController implements Initializable {

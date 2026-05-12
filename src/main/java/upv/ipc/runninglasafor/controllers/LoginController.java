@@ -1,4 +1,4 @@
-package upv.ipc.runninglasafor;
+package upv.ipc.runninglasafor.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.paint.Paint;
+import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.*;
 
 public class LoginController implements Initializable {

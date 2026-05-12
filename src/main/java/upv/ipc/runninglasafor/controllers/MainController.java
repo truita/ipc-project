@@ -1,4 +1,4 @@
-package upv.ipc.runninglasafor;
+package upv.ipc.runninglasafor.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,6 +9,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import upv.ipc.runninglasafor.ActivityListCell;
+import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
 import upv.ipc.sportlib.SportActivityApp;
 
