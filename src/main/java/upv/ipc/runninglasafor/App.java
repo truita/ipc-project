@@ -19,7 +19,7 @@ public class App extends Application {
             0
         );
         if (fa == null) throw new IOException("Failed to load font awesome");
-        scene = new Scene(loadFXML("register"), 640, 480);
+        scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
