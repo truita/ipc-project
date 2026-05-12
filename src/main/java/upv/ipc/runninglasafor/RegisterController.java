@@ -207,6 +207,7 @@ public class RegisterController implements Initializable {
             User.checkNickName(nickname)
         ) {
             app.registerUser(nickname, email, password, birthDate, avatarPath);
+            app.login(nickname, password);
             App.setRoot("main");
         }
     }
