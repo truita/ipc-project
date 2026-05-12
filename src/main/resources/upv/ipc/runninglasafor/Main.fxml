@@ -14,18 +14,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.MainController">
+<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@/styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.MainController">
   <items>
-      <ListView />
       <VBox>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0">
-              <buttons>
-                <Button mnemonicParsing="false" text="">
+            <ButtonBar buttonMinWidth="0.0" buttonOrder="U">
+               <buttons>
+                <Button mnemonicParsing="false" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font></Button>
-              </buttons>
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                     <font>
+                        <Font name="Font Awesome 7 Free Solid" size="13.0" />
+                     </font>
+                  </Button>
+               </buttons>
+            </ButtonBar>
+            <ListView VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <VBox>
+         <children>
+            <ButtonBar buttonMinWidth="0.0" buttonOrder="+U">
+               <buttons>
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                     <font>
+                        <Font name="Font Awesome 7 Free Solid" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                     <font>
+                        <Font name="Font Awesome 7 Free Solid" size="13.0" />
+                     </font>
+                  </Button>
+               </buttons>
             </ButtonBar>
             <StackPane alignment="BOTTOM_RIGHT">
                <children>

@@ -18,9 +18,8 @@ public class App extends Application {
             App.class.getResourceAsStream("/fonts/fa7-solid.otf"),
             0
         );
-        System.out.println(fa.getName());
+        if (fa == null) throw new IOException("Failed to load font awesome");
         scene = new Scene(loadFXML("Main"), 640, 480);
-
         stage.setScene(scene);
         stage.show();
     }
