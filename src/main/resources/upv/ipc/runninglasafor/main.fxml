@@ -51,45 +51,7 @@
                   </Button>
                </buttons>
             </ButtonBar>
-            <StackPane alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
-               <children>
-                  <ScrollPane fx:id="scrollPane" pannable="true">
-                     <content>
-                        <Group>
-                           <children>
-                              <Pane fx:id="zoomPane">
-                                 <children>
-                                    <ImageView pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@maps/upv.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </Group>
-                     </content>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </ScrollPane>
-                  <VBox fx:id="zoomButtons" alignment="BOTTOM_RIGHT" maxHeight="0.0" maxWidth="0.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#zoomIn" text="+">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button mnemonicParsing="false" onAction="#zoomOut" text="-">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                     </children>
-                     <StackPane.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </StackPane.margin>
-                  </VBox>
-               </children>
-            </StackPane>
+            <fx:include source="mapView.fxml" alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
   </items>

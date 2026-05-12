@@ -6,9 +6,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import upv.ipc.runninglasafor.ActivityListCell;
 import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
@@ -17,18 +14,7 @@ import upv.ipc.sportlib.SportActivityApp;
 public class MainController implements Initializable {
 
     @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
-    private Pane zoomPane;
-
-    @FXML
-    private VBox zoomButtons;
-
-    @FXML
     private ListView<Activity> activityList;
-
-    private double zoomScale = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,32 +22,6 @@ public class MainController implements Initializable {
         activityList
             .getItems()
             .addAll(SportActivityApp.getInstance().getAllActivities());
-    }
-
-    private final double ZOOM_STEP = 0.2;
-
-    @FXML
-    private void zoomIn() {
-        zoom(ZOOM_STEP);
-    }
-
-    @FXML
-    private void zoomOut() {
-        zoom(ZOOM_STEP * -1);
-    }
-
-    private void zoom(double increment) {
-        zoomScale += increment;
-        double zoom = Math.pow(2, zoomScale);
-
-        double scrollH = scrollPane.getHvalue();
-        double scrollV = scrollPane.getVvalue();
-
-        zoomPane.setScaleX(zoom);
-        zoomPane.setScaleY(zoom);
-
-        scrollPane.setHvalue(scrollH);
-        scrollPane.setVvalue(scrollV);
     }
 
     @FXML
