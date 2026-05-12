@@ -1,5 +1,6 @@
 package upv.ipc.runninglasafor;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -59,5 +60,10 @@ public class MainController implements Initializable {
 
         scrollPane.setHvalue(scrollH);
         scrollPane.setVvalue(scrollV);
+    }
+
+    @FXML
+    private void editUser() throws IOException {
+        App.setRoot("editProfile");
     }
 }

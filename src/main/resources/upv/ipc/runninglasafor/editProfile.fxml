@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="559.0" prefWidth="569.0" spacing="25.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.EditProfileController">
+   <children>
+      <VBox alignment="CENTER">
+         <children>
+            <Label text="Edit profile">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" maxWidth="200.0" spacing="8.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label fx:id="nicknameLabel" text="Nickname" />
+                  <TextField fx:id="nicknameTextField" disable="true" editable="false" maxWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label fx:id="passwordLabel" text="Password" />
+                  <PasswordField fx:id="passwordField" />
+                  <Label fx:id="passwordError" minHeight="-Infinity" text="Password must contain:&#10;· 8 to 20 characters&#10;· An uppercase letter&#10;· A lowercase letter&#10;· A digit&#10;· A symbol" textFill="#d1242f" wrapText="true" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label fx:id="birthdateLabel" text="Birth date" />
+                  <DatePicker fx:id="birthdateDatePicker" prefWidth="110.0" />
+                  <Label fx:id="birthdateError" text="You must be 13 to use this app" textFill="#d1242f" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label fx:id="emailLabel" text="Email" />
+                  <TextField fx:id="emailTextField" maxWidth="200.0" />
+                  <Label fx:id="emailError" text="Email is invalid" textFill="#d1242f" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" maxWidth="200.0" spacing="8.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Avatar" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <Button fx:id="browseAvatarButton" mnemonicParsing="false" onAction="#browseAvatar" text="Browse" />
+                        <Label fx:id="avatarPathLabel" prefHeight="25.0" prefWidth="89.0" text="No file selected" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="avatarImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" spacing="3.0">
+         <children>
+            <Label fx:id="missingFieldError" text="There are missing fields" textFill="#d1242f" />
+            <Button onAction="#update" prefWidth="200.0" text="Update profile" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
