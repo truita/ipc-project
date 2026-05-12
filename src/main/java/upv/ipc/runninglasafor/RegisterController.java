@@ -92,6 +92,22 @@ public class RegisterController implements Initializable {
                 );
             });
 
+        emailTextField
+            .textProperty()
+            .addListener((ob, oldV, newV) -> {
+                if (User.checkEmail(newV)) emailError.setVisible(false);
+            });
+        passwordField
+            .textProperty()
+            .addListener((ob, oldV, newV) -> {
+                if (User.checkPassword(newV)) passwordError.setVisible(false);
+            });
+        nicknameTextField
+            .textProperty()
+            .addListener((ob, oldV, newV) -> {
+                if (User.checkNickName(newV)) nicknameError.setVisible(false);
+            });
+
         passwordField
             .focusedProperty()
             .addListener((ob, oldV, newV) -> {
