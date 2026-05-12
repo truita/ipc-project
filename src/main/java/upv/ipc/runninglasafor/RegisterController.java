@@ -102,6 +102,13 @@ public class RegisterController implements Initializable {
             .addListener((ob, oldV, newV) -> {
                 if (User.checkPassword(newV)) passwordError.setVisible(false);
             });
+        birthdateDatePicker
+            .valueProperty()
+            .addListener((ob, oldV, newV) -> {
+                if (User.isOlderThan(newV, 12)) birthdateError.setVisible(
+                    false
+                );
+            });
         nicknameTextField
             .textProperty()
             .addListener((ob, oldV, newV) -> {
