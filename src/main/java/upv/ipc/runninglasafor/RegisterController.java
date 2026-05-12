@@ -181,6 +181,14 @@ public class RegisterController implements Initializable {
         String password = passwordField.getText();
         LocalDate birthDate = birthdateDatePicker.getValue();
         String nickname = nicknameTextField.getText();
+        if (email.isBlank()) emailLabel.setTextFill(errorColor);
+        else emailLabel.setTextFill(normalColor);
+        if (password.isBlank()) passwordLabel.setTextFill(errorColor);
+        else passwordLabel.setTextFill(normalColor);
+        if (birthDate == null) birthdateLabel.setTextFill(errorColor);
+        else birthdateLabel.setTextFill(normalColor);
+        if (nickname.isBlank()) nicknameLabel.setTextFill(errorColor);
+        else nicknameLabel.setTextFill(normalColor);
         if (
             email.isBlank() ||
             password.isBlank() ||
@@ -188,14 +196,6 @@ public class RegisterController implements Initializable {
             nickname.isBlank()
         ) {
             missingFieldError.setVisible(true);
-            if (email.isBlank()) emailLabel.setTextFill(errorColor);
-            else emailLabel.setTextFill(normalColor);
-            if (password.isBlank()) passwordLabel.setTextFill(errorColor);
-            else passwordLabel.setTextFill(normalColor);
-            if (birthDate == null) birthdateLabel.setTextFill(errorColor);
-            else birthdateLabel.setTextFill(normalColor);
-            if (nickname.isBlank()) nicknameLabel.setTextFill(errorColor);
-            else nicknameLabel.setTextFill(normalColor);
             return;
         } else {
             missingFieldError.setVisible(false);
