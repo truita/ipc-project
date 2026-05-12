@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" minWidth="225.0" prefWidth="225.0" spacing="5.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.ActivityCellController">
+   <children>
+      <VBox alignment="CENTER" HBox.hgrow="NEVER">
+         <children>
+            <Label fx:id="name" text="Nos fuimos a la montaña" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fx:id="date" strokeType="OUTSIDE" strokeWidth="0.0" text="16/09/2025">
+               <font>
+                  <Font size="12.0" />
+               </font></Text>
+         </children>
+      </VBox>
+      <Region HBox.hgrow="ALWAYS" />
+      <VBox alignment="CENTER" HBox.hgrow="NEVER">
+         <children>
+            <Text fx:id="distance" strokeType="OUTSIDE" strokeWidth="0.0" text="60">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="km">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

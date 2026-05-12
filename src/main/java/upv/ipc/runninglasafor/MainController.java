@@ -4,9 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import upv.ipc.sportlib.Activity;
+import upv.ipc.sportlib.SportActivityApp;
 
 public class MainController implements Initializable {
 
@@ -19,10 +22,18 @@ public class MainController implements Initializable {
     @FXML
     private VBox zoomButtons;
 
+    @FXML
+    private ListView<Activity> activityList;
+
     private double zoomScale = 0;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        activityList.setCellFactory(c -> new ActivityListCell());
+        activityList
+            .getItems()
+            .addAll(SportActivityApp.getInstance().getAllActivities());
+    }
 
     private final double ZOOM_STEP = 0.2;
 
