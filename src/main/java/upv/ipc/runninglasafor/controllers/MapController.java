@@ -29,6 +29,8 @@ import upv.ipc.sportlib.MapProjection;
 import upv.ipc.sportlib.MapRegion;
 import upv.ipc.sportlib.TrackPoint;
 
+// TODO: show legend for minSpeed/maxSpeed along with gradient
+// TODO: hovering over the elevation graph should show the corresponding point in the map
 public class MapController implements Initializable {
 
     private MapProjection currentMapProjection;
@@ -85,7 +87,7 @@ public class MapController implements Initializable {
         });
     }
 
-    // TODO: center view/zoom on the activity
+    // TODO: center view/zoom on the activity after loading
     public void setActivity(Activity activity) {
         currentActivity = activity;
 

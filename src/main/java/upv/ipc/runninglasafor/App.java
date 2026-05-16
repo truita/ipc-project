@@ -10,6 +10,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import upv.ipc.sportlib.SportActivityApp;
 
+// TODO: custom css that doesn't seem from the 90s
+// TODO: replace font awesome font with individual SVGs
 public class App extends Application {
 
     private static Scene scene;

@@ -12,6 +12,7 @@ import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
 import upv.ipc.sportlib.SportActivityApp;
 
+// TODO: add activity button (open file picker and import)
 public class MainController implements Initializable {
 
     @FXML
