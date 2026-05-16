@@ -46,7 +46,7 @@
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#toggleSpeed" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>

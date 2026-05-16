@@ -1,13 +1,11 @@
 package upv.ipc.runninglasafor.controllers;
 
-import java.io.Serial;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.animation.Interpolator;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,12 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import javax.sound.midi.Track;
 import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
 import upv.ipc.sportlib.MapProjection;
@@ -38,6 +32,8 @@ public class MapController implements Initializable {
     private MapProjection currentMapProjection;
     private Activity currentActivity;
 
+    public BooleanProperty speedToggle = new SimpleBooleanProperty(false);
+
     @FXML
     private ImageView imageView;
 
@@ -47,12 +43,15 @@ public class MapController implements Initializable {
     @FXML
     private Text noActivityText;
 
+    private double traceWidth() {
+        return TRACE_WIDTH / Math.pow(2, zoomScale);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        MapRegion region = SportActivityApp.getInstance()
-            .getMapRegions()
-            .get(0);
-        loadMapRegion(region);
+        speedToggle.addListener((observable, oldVal, newVal) -> {
+            drawTrace(currentActivity, newVal, traceWidth());
+        });
     }
 
     private void loadMapRegion(MapRegion region) {
@@ -123,8 +122,7 @@ public class MapController implements Initializable {
         currentActivity = activity;
 
         loadMapRegion(activity.getSuggestedMap());
-        double zoom = Math.pow(2, zoomScale);
-        drawTrace(activity, false, TRACE_WIDTH / zoom);
+        drawTrace(activity, false, traceWidth());
 
         // Technically only needed for the first activity selected
         noActivityText.setVisible(false);
@@ -170,6 +168,6 @@ public class MapController implements Initializable {
         scrollPane.setHvalue(scrollH);
         scrollPane.setVvalue(scrollV);
 
-        drawTrace(currentActivity, true, TRACE_WIDTH / zoom);
+        drawTrace(currentActivity, speedToggle.get(), traceWidth());
     }
 }
