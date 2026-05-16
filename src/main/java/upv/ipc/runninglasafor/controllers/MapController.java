@@ -54,15 +54,51 @@ public class MapController implements Initializable {
     @FXML
     private NumberAxis elevationChartYAxis;
 
-    private double traceWidth() {
-        return TRACE_WIDTH / Math.pow(2, zoomScale);
-    }
+    private final double TRACE_WIDTH = 3;
+
+    private final Color TRACE_COLOR = new Color(0.0353, 0.0, 1.0, 1.0);
+
+    private final double ALTITUDE_CHART_PADDING = 5;
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
+    private Pane zoomPane;
+
+    @FXML
+    private VBox zoomButtons;
+
+    private double zoomScale = 0;
+
+    private final double ZOOM_STEP = 0.2;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         speedToggle.addListener((observable, oldVal, newVal) -> {
             drawTrace(currentActivity, newVal, traceWidth());
         });
+    }
+
+    // TODO: center view/zoom on the activity
+    public void setActivity(Activity activity) {
+        currentActivity = activity;
+
+        loadMapRegion(activity.getSuggestedMap());
+        drawTrace(activity, false, traceWidth());
+        populateElevationChart(activity);
+
+        // Technically only needed for the first activity selected
+        noActivityText.setVisible(false);
+        noActivityText.setDisable(true);
+        scrollPane.setDisable(false);
+        scrollPane.setVisible(true);
+        zoomButtons.setDisable(false);
+        zoomButtons.setVisible(true);
+    }
+
+    private double traceWidth() {
+        return TRACE_WIDTH / Math.pow(2, zoomScale);
     }
 
     private void loadMapRegion(MapRegion region) {
@@ -76,9 +112,6 @@ public class MapController implements Initializable {
         );
         imageView.setImage(mapImg);
     }
-
-    private final double TRACE_WIDTH = 3;
-    private final Color TRACE_COLOR = new Color(0.0353, 0.0, 1.0, 1.0);
 
     private void drawTrace(Activity activity, boolean showSpeed, double width) {
         activityTrace.setDisable(true);
@@ -129,8 +162,6 @@ public class MapController implements Initializable {
         activityTrace.setVisible(true);
     }
 
-    private final double ALTITUDE_CHART_PADDING = 5;
-
     private void populateElevationChart(Activity activity) {
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         List<TrackPoint> trackPoints = activity.getTrackPoints();
@@ -160,35 +191,6 @@ public class MapController implements Initializable {
 
         elevationChartXAxis.setUpperBound(currentMeter / 1000);
     }
-
-    // TODO: center view/zoom on the activity
-    public void setActivity(Activity activity) {
-        currentActivity = activity;
-
-        loadMapRegion(activity.getSuggestedMap());
-        drawTrace(activity, false, traceWidth());
-        populateElevationChart(activity);
-
-        // Technically only needed for the first activity selected
-        noActivityText.setVisible(false);
-        noActivityText.setDisable(true);
-        scrollPane.setDisable(false);
-        scrollPane.setVisible(true);
-        zoomButtons.setDisable(false);
-        zoomButtons.setVisible(true);
-    }
-
-    @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
-    private Pane zoomPane;
-
-    @FXML
-    private VBox zoomButtons;
-
-    private double zoomScale = 0;
-    private final double ZOOM_STEP = 0.2;
 
     @FXML
     private void zoomIn() {
