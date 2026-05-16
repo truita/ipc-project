@@ -35,6 +35,7 @@ public class MapController implements Initializable {
     private Activity currentActivity;
 
     public BooleanProperty speedToggle = new SimpleBooleanProperty(false);
+    public BooleanProperty altitudeToggle = new SimpleBooleanProperty(false);
 
     @FXML
     private ImageView imageView;
@@ -77,6 +78,10 @@ public class MapController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         speedToggle.addListener((observable, oldVal, newVal) -> {
             drawTrace(currentActivity, newVal, traceWidth());
+        });
+        altitudeToggle.addListener((observable, oldVal, newVal) -> {
+            elevationChart.setDisable(!newVal);
+            elevationChart.setVisible(newVal);
         });
     }
 

@@ -43,6 +43,12 @@ public class MainController implements Initializable {
         mapController.speedToggle.set(!mapController.speedToggle.get());
     }
 
+    // TODO: change speed button icon when toggled
+    @FXML
+    private void toggleAltitude() {
+        mapController.altitudeToggle.set(!mapController.altitudeToggle.get());
+    }
+
     @FXML
     private void editUser() throws IOException {
         App.setRoot("editProfile");

@@ -41,7 +41,7 @@
          <children>
             <ButtonBar buttonMinWidth="0.0" buttonOrder="+U">
                <buttons>
-                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#toggleAltitude" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>
