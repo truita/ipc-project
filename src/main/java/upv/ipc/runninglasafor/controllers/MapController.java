@@ -12,6 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,7 +27,6 @@ import upv.ipc.runninglasafor.App;
 import upv.ipc.sportlib.Activity;
 import upv.ipc.sportlib.MapProjection;
 import upv.ipc.sportlib.MapRegion;
-import upv.ipc.sportlib.SportActivityApp;
 import upv.ipc.sportlib.TrackPoint;
 
 public class MapController implements Initializable {
@@ -42,6 +44,15 @@ public class MapController implements Initializable {
 
     @FXML
     private Text noActivityText;
+
+    @FXML
+    private AreaChart<Number, Number> elevationChart;
+
+    @FXML
+    private NumberAxis elevationChartXAxis;
+
+    @FXML
+    private NumberAxis elevationChartYAxis;
 
     private double traceWidth() {
         return TRACE_WIDTH / Math.pow(2, zoomScale);
@@ -118,11 +129,45 @@ public class MapController implements Initializable {
         activityTrace.setVisible(true);
     }
 
+    private final double ALTITUDE_CHART_PADDING = 5;
+
+    private void populateElevationChart(Activity activity) {
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        List<TrackPoint> trackPoints = activity.getTrackPoints();
+
+        double currentMeter = 0;
+        TrackPoint prevPoint = trackPoints.get(0);
+        for (TrackPoint point : trackPoints) {
+            currentMeter += prevPoint.distanceTo(point);
+            series
+                .getData()
+                .add(
+                    new XYChart.Data<>(
+                        currentMeter / 1000,
+                        point.getElevation()
+                    )
+                );
+            prevPoint = point;
+        }
+
+        elevationChart.getData().clear();
+        elevationChart.getData().add(series);
+
+        elevationChartYAxis.setUpperBound(
+            activity.getMaxElevation() + ALTITUDE_CHART_PADDING
+        );
+        elevationChartYAxis.setLowerBound(activity.getMinElevation());
+
+        elevationChartXAxis.setUpperBound(currentMeter / 1000);
+    }
+
+    // TODO: center view/zoom on the activity
     public void setActivity(Activity activity) {
         currentActivity = activity;
 
         loadMapRegion(activity.getSuggestedMap());
         drawTrace(activity, false, traceWidth());
+        populateElevationChart(activity);
 
         // Technically only needed for the first activity selected
         noActivityText.setVisible(false);

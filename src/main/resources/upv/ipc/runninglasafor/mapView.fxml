@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -10,13 +12,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <StackPane alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.ipc.runninglasafor.controllers.MapController">
    <children>
-      <ScrollPane fx:id="scrollPane" disable="true" pannable="true" visible="false">
+      <ScrollPane fx:id="scrollPane" pannable="true">
          <content>
             <Group>
                <children>
@@ -37,7 +38,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ScrollPane>
-      <VBox fx:id="zoomButtons" alignment="BOTTOM_RIGHT" disable="true" maxHeight="0.0" maxWidth="0.0" visible="false">
+      <VBox fx:id="zoomButtons" alignment="BOTTOM_RIGHT" maxHeight="0.0" maxWidth="0.0">
          <children>
             <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" text="+">
                <cursor>
@@ -60,6 +61,14 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </StackPane.margin>
       </VBox>
+      <AreaChart fx:id="elevationChart" animated="false" createSymbols="false" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" StackPane.alignment="BOTTOM_LEFT">
+        <xAxis>
+          <NumberAxis fx:id="elevationChartXAxis" autoRanging="false" label="km" lowerBound="0" minorTickVisible="false" side="BOTTOM" tickUnit="1.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="elevationChartYAxis" autoRanging="false" label="m" minorTickVisible="false" side="LEFT" />
+        </yAxis>
+      </AreaChart>
       <Text fx:id="noActivityText" fill="#686666" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select an activity to view" StackPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
