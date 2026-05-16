@@ -27,7 +27,7 @@
                               <Image url="@maps/calderona.jpg" />
                            </image>
                         </ImageView>
-                        <Polyline fx:id="activityTrace" disable="true" fill="TRANSPARENT" points="" stroke="#1680eb" strokeType="INSIDE" strokeWidth="3.0" />
+                        <Group fx:id="activityTrace" />
                      </children>
                   </Pane>
                </children>
