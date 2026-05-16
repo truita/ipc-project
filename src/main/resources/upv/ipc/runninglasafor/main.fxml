@@ -22,6 +22,16 @@
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                     <font>
+                        <Font name="Font Awesome 7 Free Solid" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#editUser" text="" textAlignment="CENTER">
+                     <font>
+                        <Font name="Font Awesome 7 Free Solid" size="13.0" />
+                     </font>
+                  </Button>
                </buttons>
             </ButtonBar>
             <ListView fx:id="activityList" fixedCellSize="50.0" minWidth="-Infinity" prefWidth="250.0" VBox.vgrow="ALWAYS" />
@@ -31,12 +41,12 @@
          <children>
             <ButtonBar buttonMinWidth="0.0" buttonOrder="+U">
                <buttons>
-                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#editUser" text="" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Font Awesome 7 Free Solid" size="13.0" />
                      </font>
